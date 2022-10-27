@@ -1,0 +1,12 @@
+POST https://3000-guirrabyte-boombackend-qcdicsug28o.ws-us72.gitpod.io/users HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Mabel Swarts",
+  "email": "mabelswarts@gmail.com",
+  "password": "mabelswarts123456",
+  "roles": ["admin"]
+}
+
+###
+GET https://3000-guirrabyte-boombackend-qcdicsug28o.ws-us72.gitpod.io/users HTTP/1.1
