@@ -1,20 +1,14 @@
-import { IUserRepository } from '../../repositories/IUserRepository';
-import { User, UserDocument } from '../../entities/user.entity';
-import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from '../../dto/create-user.dto';
 import { UpdateUserDto } from '../../dto/update-user.dto';
-import { Injectable, Scope } from '@nestjs/common';
+import { User } from '../../entities/user.entity';
 
-@Injectable({ scope: Scope.DEFAULT })
-export class UserRepository implements IUserRepository {
-  constructor(
-    @InjectModel(User.name) private userRepository: Model<UserDocument>,
-  ) {}
+export class UsersRepository {
+  constructor(private userRepository: Model<User>) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const createdUser = new this.userRepository(createUserDto);
-    return createdUser.save();
+    const user = new this.userRepository(createUserDto);
+    return user;
   }
 
   async findAll(): Promise<User[]> {

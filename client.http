@@ -1,4 +1,4 @@
-POST https://3000-guirrabyte-boombackend-qcdicsug28o.ws-us72.gitpod.io/users HTTP/1.1
+POST https://3000-guirrabyte-boombackend-l29c60y00tu.ws-us73.gitpod.iousers HTTP/1.1
 content-type: application/json
 
 {
@@ -9,4 +9,4 @@ content-type: application/json
 }
 
 ###
-GET https://3000-guirrabyte-boombackend-qcdicsug28o.ws-us72.gitpod.io/users HTTP/1.1
+GET https://3000-guirrabyte-boombackend-l29c60y00tu.ws-us73.gitpod.io/users HTTP/1.1
