@@ -2,8 +2,9 @@ import { Model } from 'mongoose';
 import { CreateUserDto } from '../../dto/create-user.dto';
 import { UpdateUserDto } from '../../dto/update-user.dto';
 import { User } from '../../entities/user.entity';
+import { IUsersRepository } from '../../repositories/IUserRepository';
 
-export class UsersRepository {
+export class UsersRepository implements IUsersRepository {
   constructor(private userRepository: Model<User>) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
