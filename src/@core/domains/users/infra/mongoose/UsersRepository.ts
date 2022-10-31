@@ -21,7 +21,7 @@ export class UsersRepository implements IUsersRepository {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    await this.userRepository.findById(id, updateUserDto, {
+    await this.userRepository.findByIdAndUpdate(id, updateUserDto, {
       new: true,
     });
   }
