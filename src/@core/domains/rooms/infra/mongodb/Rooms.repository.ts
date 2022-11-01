@@ -6,23 +6,22 @@ import { IRoomRepository } from '../../repostiories/IRoomRepository';
 
 export class RoomRepository implements IRoomRepository {
   constructor(private roomModel: Model<Room>) {}
+
   async create(createRoomDto: CreateRoomDto): Promise<Room> {
     const user = new this.roomModel(createRoomDto);
     return user;
+  }
+  async findAll(): Promise<Room[]> {
+    const rooms = this.roomModel.find().exec();
+    return rooms;
+  }
+  async findOne(id: string): Promise<Room> {
+    return this.roomModel.findById(id);
   }
   async update(id: string, updateRoomDto: UpdateRoomDto): Promise<void> {
     await this.roomModel.findOneAndUpdate({ _id: id }, updateRoomDto);
   }
   async remove(id: string): Promise<void> {
     await this.roomModel.findByIdAndDelete(id);
-  }
-  findAll(): Promise<Room[]> {
-    const rooms = this.roomModel.find().exec();
-    return rooms;
-  }
-
-  findOne(id: string): Promise<Room> {
-    const room = this.roomModel.findById(id).exec();
-    return room;
   }
 }
