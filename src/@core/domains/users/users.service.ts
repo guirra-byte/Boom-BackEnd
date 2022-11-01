@@ -4,9 +4,9 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { hash } from 'bcrypt';
 import { UsersRepository } from './infra/mongoose/UsersRepository';
-import { UseRepository } from 'src/shared/providers/decorator/RepositoryProvider.decorator';
+//import { UseRepository } from 'src/shared/providers/decorator/RepositoryProvider.decorator';
 
-@UseRepository('UsersRepository')
+//@UseRepository('UsersRepository')
 @Injectable()
 export class UsersService {
   constructor(
