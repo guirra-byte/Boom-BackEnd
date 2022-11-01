@@ -36,6 +36,21 @@ export class UsersService {
     return createdUser;
   }
 
+  async createAdmin(createUserDto: CreateUserDto): Promise<User> {
+    const { name, email, password } = createUserDto;
+
+    const hashPassword = await hash(password, 10);
+
+    const createdUserAdmin = await this.userRepository.create({
+      email: email,
+      password: hashPassword,
+      name: name,
+      roles: ['admin'],
+    });
+
+    return createdUserAdmin;
+  }
+
   async authenticate(
     email: string,
     password: string,
