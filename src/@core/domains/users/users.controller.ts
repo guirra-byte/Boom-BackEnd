@@ -11,6 +11,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { AuthenticateUserDto } from './dto/authenticate-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -20,6 +21,13 @@ export class UsersController {
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
+  }
+
+  @HttpCode(200)
+  @Post('session')
+  authenticate(@Body() authenticateUserDto: AuthenticateUserDto) {
+    const { email, password, secretWord } = authenticateUserDto;
+    return this.usersService.authenticate(email, password, secretWord);
   }
 
   @Get()

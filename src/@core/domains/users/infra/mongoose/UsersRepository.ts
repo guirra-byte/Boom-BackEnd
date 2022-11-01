@@ -20,6 +20,10 @@ export class UsersRepository implements IUsersRepository {
     return this.userRepository.findById(id);
   }
 
+  async findByEmail(email: string): Promise<User> {
+    return this.userRepository.findOne({ email });
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto) {
     await this.userRepository.findByIdAndUpdate(id, updateUserDto, {
       new: true,
