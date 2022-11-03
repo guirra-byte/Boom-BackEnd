@@ -4,6 +4,9 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { compare, hash } from 'bcrypt';
 import { UsersRepository } from './infra/mongoose/UsersRepository';
+
+//import { UseRepository } from 'src/shared/providers/decorator/RepositoryProvider.decorator';
+
 import { UseRepository } from 'src/shared/decorators/RepositoryProvider.decorator';
 import { sign } from 'jsonwebtoken';
 import { SetMetadata } from '@nestjs/common';
@@ -17,7 +20,7 @@ export interface ICipherPayload {
   encryptedData: string;
 }
 
-@UseRepository('UsersRepository')
+//@UseRepository('UsersRepository')
 @Injectable()
 export class UsersService {
   constructor(
