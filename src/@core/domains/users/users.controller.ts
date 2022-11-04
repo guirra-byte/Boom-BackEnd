@@ -15,6 +15,10 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthenticateUserDto } from './dto/authenticate-user.dto';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from './auth/Jwt/jwt.guard';
+import { Roles } from './auth/decorators/roles.decorator';
+import { LocalStrategyGuard } from './auth/localStrategy.guard';
+import { RolesGuard } from '../../../shared/infra/guards/isAdmin.guard';
 
 @Controller('users')
 export class UsersController {
@@ -31,10 +35,24 @@ export class UsersController {
     return this.authService.login(user);
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  @UseGuards(LocalStrategyGuard)
+  @Get('login')
+  login(@Body() user) {
+    return this.authService.login({ username: user.username, email: user.email });
+  }
+  
+
+  @UseGuards(JwtAuthGuard)
   @Get('verify')
   verify(@Body() user: { username: string, email: string }) {
     return 'Authenticated';
+  }
+
+  @Roles('admin')
+  @UseGuards(RolesGuard)
+  @Get('admin')
+  admin() {
+    return 'You are an admin';
   }
 
   @HttpCode(200)
