@@ -1,4 +1,4 @@
-import { Injectable, ExecutionContext, CanActivate } from '@nestjs/common';
+/*import { Injectable, ExecutionContext, CanActivate } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { Reflector } from '@nestjs/core';
 import { verify } from 'jsonwebtoken';
@@ -37,4 +37,4 @@ export class AuthGuard implements CanActivate {
       }
     }
   }
-}
+} */
