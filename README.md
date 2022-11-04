@@ -60,4 +60,4 @@ $ npm run test:cov
 
 ## Colaborators
 
-- <a href="https://www.linkedin.com/in/willian-guedes-0b9630186/">`William Guedes`</a>
+- <a href="https://www.linkedin.com/in/willian-guedes-0b9630186/">`Willian Guedes`</a>
