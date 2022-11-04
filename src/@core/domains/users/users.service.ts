@@ -12,13 +12,6 @@ import { sign } from 'jsonwebtoken';
 import { SetMetadata } from '@nestjs/common';
 import * as crypt from 'crypto';
 
-export interface ICipherPayload {
-  token: string;
-  algorithm: string;
-  vector: Buffer;
-  secretKey: Buffer;
-  encryptedData: string;
-}
 
 //@UseRepository('UsersRepository')
 @Injectable()
@@ -84,15 +77,7 @@ export class UsersService {
       expiresIn: '1d',
     });
 
-    const cipherAuthToken = {
-      token: jwtToken,
-      algorithm: algorithm,
-      vector: initVector,
-      secretKey: secretKey,
-      encryptedData: encryptedData,
-    } as ICipherPayload;
 
-    SetMetadata('secret_token', cipherAuthToken);
   }
 
   async findAll(): Promise<User[]> {
